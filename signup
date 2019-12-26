@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:login/home_page.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUp extends StatefulWidget {
   static String tag = 'login-page';
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -15,7 +14,7 @@ class _LoginPageState extends State<LoginPage> {
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
         radius: 48.0,
-        child: Image.asset('assets/logo.png'),
+        child: Image.asset('assets/insta.jpg'),
       ),
     );
 
@@ -40,6 +39,20 @@ class _LoginPageState extends State<LoginPage> {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
+    final loginButtonFb = Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        onPressed: () {
+          //  Navigator.of(context).pushNamed(HomePage.tag);
+        },
+        padding: EdgeInsets.all(12),
+        color: Colors.blue,
+        child: Text('Login With FB', style: TextStyle(color: Colors.white)),
+      ),
+    );
 
     final loginButton = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
@@ -48,13 +61,15 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(4),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(HomePage.tag);
+        //  Navigator.of(context).pushNamed(HomePage.tag);
         },
         padding: EdgeInsets.all(12),
         color: Colors.blue,
-        child: Text('Next', style: TextStyle(color: Colors.white)),
+        child: Text('SignUp', style: TextStyle(color: Colors.white)),
       ),
     );
+
+
 
     final forgotLabel = FlatButton(
       child: Text(
@@ -68,12 +83,12 @@ class _LoginPageState extends State<LoginPage> {
       backgroundColor: Colors.white,
       body: Container(
         height: MediaQuery.of(context).size.height,
-        padding: const EdgeInsets.only(top: 100, left: 16, bottom: 16, right: 16),
+        padding: const EdgeInsets.only(top: 10, left: 16, bottom: 16, right: 16),
         child: ListView(
           shrinkWrap: true,
           padding: EdgeInsets.only(left: 24.0, right: 24.0),
           children: <Widget>[
-            logo,
+            //logo,
             SizedBox(height: 40.0),
             Container(
               child: Column(
@@ -88,35 +103,26 @@ class _LoginPageState extends State<LoginPage> {
 
             SizedBox(height: 8.0),
             SizedBox(height: 24.0),
-            loginButton,
+            loginButtonFb,
             SizedBox(height: 2,),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  height: 40,
-                  width: 40,
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 4,
-                  ),
+                new Container(
+                  height: 1.0,
+                  width: MediaQuery.of(context).size.width / 2.7,
+                  color: Colors.grey,
+                  child:  ListTile(),
                 ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                Text("kbhdsa"),
-                SizedBox(
-                width: 5,
+                Text(
+                  ' OR ',
+                  style:  TextStyle(color: Colors.blueGrey),
                 ),
                 Container(
-                  height: 40,
-                  width: 40,
-                  child:
-                  Divider(
-                    color: Colors.grey,
-                    height: 4,
-                  ),
+                  height: 1.0,
+                  width: MediaQuery.of(context).size.width / 2.7,
+                  color: Colors.grey,
                 ),
-
               ],
             ),
 
