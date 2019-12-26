@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_app/signUp.dart';
+import 'forgotPass.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -18,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      bottomNavigationBar: _bottomBar(),
+    //  bottomNavigationBar: _bottomBar(),
       body: _body(),
     );
   }
@@ -123,57 +125,86 @@ class _LoginScreenState extends State<LoginScreen> {
     return new Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(25.0),
-      child: new Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.only(top: 25.0, bottom: 15.0),
-            child: new Text(
-              'Instagram',
-              style: new TextStyle(fontFamily: 'Billabong', fontSize: 50.0),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.only(top: 25.0, bottom: 15.0),
+              child: new Text(
+                'Instagram',
+                style: new TextStyle(fontFamily: 'Billabong', fontSize: 50.0),
+              ),
             ),
-          ),
-          _userIDEditContainer(),
-          _passwordEditContainer(),
-          _loginContainer(),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Text(
-                'Forgot your login details?',
-                style: _textStyleGrey,
-              ),
-              new FlatButton(
-                onPressed: () {},
-                child: new Text(
-                  'Get help signing in.',
-                  style: _textStyleBlueGrey,
+            _userIDEditContainer(),
+            SizedBox(
+              height: 10,
+            ),
+            _passwordEditContainer(),
+            SizedBox(
+              height: 10,
+            ),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                InkWell(
+                  child: Text(
+                    'Forgot your login details?',
+                    style: _textStyleGrey,
+                  ),
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPass()));
+                  } ,
+                )
+                ,
+              ],
+            ),
+            _loginContainer(),
+
+            SizedBox(
+              height: 10,
+            ),
+            _facebookContainer(),
+            SizedBox(
+              height: 10,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Container(
+                  height: 1.0,
+                  width: MediaQuery.of(context).size.width / 2.7,
+                  color: Colors.grey,
+                  child:  ListTile(),
                 ),
-              )
-            ],
-          ),
-          new Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new Container(
-                height: 1.0,
-                width: MediaQuery.of(context).size.width / 2.7,
-                color: Colors.grey,
-                child: new ListTile(),
+                 Text(
+                  ' OR ',
+                  style:  TextStyle(color: Colors.blueGrey),
+                ),
+                 Container(
+                  height: 1.0,
+                  width: MediaQuery.of(context).size.width / 2.7,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              child: InkWell(
+                child: Text("SignUp"),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp()),
+                  );
+                },
               ),
-              new Text(
-                ' OR ',
-                style: new TextStyle(color: Colors.blueGrey),
-              ),
-              new Container(
-                height: 1.0,
-                width: MediaQuery.of(context).size.width / 2.7,
-                color: Colors.grey,
-              ),
-            ],
-          ),
-          _facebookContainer()
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
