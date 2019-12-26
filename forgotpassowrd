@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:login/home_page.dart';
-
-class LoginPage extends StatefulWidget {
+class ForgotPass extends StatefulWidget {
   static String tag = 'login-page';
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<ForgotPass> {
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -48,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
           borderRadius: BorderRadius.circular(4),
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(HomePage.tag);
+       //   Navigator.of(context).pushNamed(HomePage.tag);
         },
         padding: EdgeInsets.all(12),
         color: Colors.blue,
